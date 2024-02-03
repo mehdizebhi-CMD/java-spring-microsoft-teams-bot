@@ -1,0 +1,19 @@
+package dev.mehdizebhi.tbot;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.scheduling.annotation.EnableScheduling;
+
+@SpringBootApplication
+@EnableScheduling
+@EnableAsync
+public class TBotApplication {
+
+    /**
+     * @param args command line arguments
+     */
+    public static void main(String[] args) {
+        SpringApplication.run(TBotApplication.class, args);
+    }
+}
