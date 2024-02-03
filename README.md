@@ -28,7 +28,7 @@ Briefly introduce your project, its purpose, and the improvements or additional 
 2. Navigate to the project directory:
 
     ```bash
-    cd yourproject
+    cd java-spring-microsoft-teams-bot
     ```
 
 3. Build the project:
