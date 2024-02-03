@@ -34,6 +34,8 @@ public interface MicrosoftTeamsGraphApi {
 
     Optional<ChatMessage> sendChannelMessage(String content, String teamId, String channelId);
 
+    Optional<ChatMessage> sendChannelMessage(ChatMessage chatMessage, String teamId, String channelId);
+
     Optional<TeamworkTagCollectionPage> getTagsInATeam(String teamId);
 
     Optional<TeamworkTag> getASingleTagInATeam(String teamId, String teamworkTagId);

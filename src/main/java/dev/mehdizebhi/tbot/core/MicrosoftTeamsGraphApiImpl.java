@@ -190,6 +190,20 @@ public class MicrosoftTeamsGraphApiImpl implements MicrosoftTeamsGraphApi {
     }
 
     @Override
+    public Optional<ChatMessage> sendChannelMessage(ChatMessage chatMessage, String teamId, String channelId) {
+        try {
+            var newChatMessage = graphServiceClient.teams(teamId).channels(channelId).messages()
+                    .buildRequest()
+                    .post(chatMessage);
+
+            return Optional.of(newChatMessage);
+        } catch (Exception e) {
+            log.error("Can not send channel message: ", e);
+            return Optional.empty();
+        }
+    }
+
+    @Override
     public Optional<TeamworkTagCollectionPage> getTagsInATeam(String teamId) {
         try {
             TeamworkTagCollectionPage tags = graphServiceClient.teams(teamId).tags()
