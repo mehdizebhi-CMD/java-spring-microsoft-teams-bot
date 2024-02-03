@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layout}">
+
+<head>
+  <title>Home</title>
+</head>
+
+<body>
+  <div layout:fragment="content">
+    <div class="p-5 mb-4 bg-dark text-white rounded-3">
+      <h1>Graph Bot For Microsoft Teams</h1>
+      <p class="fs-4">Please select the desired subscription according to the logged in account through the panel below.</p>
+    </div>
+    <div class="row align-items-md-stretch">
+      <div class="col-md-6 mb-2">
+        <div th:class="${isAuthorizedBot}? 'h-100 p-5 bg-light border rounded-3 border-success' : 'h-100 p-5 bg-light border rounded-3'">
+          <h2>Delegated authentication</h2>
+          <p>Choose this option to sign in as a user and save user authorization for bot client to behave and call graph api such as send message and etc.</p>
+          <a th:if="${isAuthorizedBot}" class="btn btn-primary" th:href="@{'/watch/authorize-delegated-bot'}">Reauthorize</a>
+          <a th:if="${isAuthorizedBot}" class="btn btn-danger" th:href="@{'/watch/unauthorized-delegated-bot'}">Unauthorized</a>
+          <a th:unless="${isAuthorizedBot}" class="btn btn-outline-secondary" th:href="@{'/watch/authorize-delegated-bot'}">Authorize</a>
+        </div>
+      </div>
+      <div class="col-md-6 mb-2">
+        <div th:class="${isApponlySubscribed}? 'h-100 p-5 bg-light border rounded-3 border-success' : 'h-100 p-5 bg-light border rounded-3'">
+          <h2>App-only authentication</h2>
+          <p>Choose this option to have the application receive notifications when messages are sent to any Teams channel</p>
+          <a th:if="${isApponlySubscribed}" class="btn btn-primary" th:href="@{'/watch/resubscribe-apponly'}">Resubscribe</a>
+          <a th:if="${isApponlySubscribed}" class="btn btn-danger" th:href="@{'/watch/unsubscribe-apponly'}">Unsubscribed</a>
+          <a th:unless="${isApponlySubscribed}" class="btn btn-outline-secondary" th:href="@{'/watch/subscribe-apponly'}">Subscribe</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

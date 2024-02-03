@@ -1,0 +1,39 @@
+spring:
+  application:
+    name: tbot
+  cloud:
+    azure:
+      active-directory:
+        enabled: true
+        keydiscoveryurl: https://login.microsoftonline.com/common/discovery/keys
+        profile:
+          tenant-id: [tenant-id]
+        credential:
+          client-id: [client-id]
+          client-secret: [client-secret]
+        post-logout-redirect-uri: http://localhost:8080
+        authorization-clients:
+          graph:
+            scopes: user.read, mail.read, ChannelMessage.Send
+          apponly:
+            authorization-grant-type: client_credentials
+            scopes: https://graph.microsoft.com/.default
+
+app:
+  protect:
+    authenticated: /delegated, /apponly
+
+notifications:
+  host: [host-address]
+
+certificate:
+  storename: JKSkeystore.jks
+  storepass: [pass]
+  alias: [alias]
+
+server:
+  port: 8080
+
+logging:
+  file:
+    path: logs
